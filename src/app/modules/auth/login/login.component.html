@@ -1,25 +1,28 @@
 <mat-card>
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
-    <form>
+    <form [formGroup]="form" >
       <p>
         <mat-form-field>
-          <input type="text" matInput placeholder="Username" >
+          <input type="text" matInput placeholder="Username" formControlName="user" autocomplete="on">
+          <mat-error *ngIf="isControlHasError('user','required')">
+            <small>La usuario es <strong>requerido</strong>.</small>
+          </mat-error>
         </mat-form-field>
       </p>
 
       <p>
         <mat-form-field>
-          <input type="password" matInput placeholder="Password">
+          <input type="password" matInput placeholder="Password" formControlName="password" autocomplete="on">
+          <mat-error *ngIf="isControlHasError('password','required')">
+            <small>La contraseña es <strong>requerida</strong>.</small>
+          </mat-error>
         </mat-form-field>
-      </p>
 
-      <p *ngIf="false" class="error">
-        {{ false }}
       </p>
 
       <div class="button">
-        <button type="submit" mat-button>Login</button>
+        <button mat-flat-button (click)="onSubmit()" color="primary" class="btn btn-primary">Log in</button>
       </div>
 
     </form>

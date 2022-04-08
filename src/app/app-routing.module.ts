@@ -5,13 +5,11 @@ import {Error404Component} from "./modules/error/error404/error404.component";
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren:
-      () => import('./modules/auth/auth.module').then(m =>m.AuthModule)
+    loadChildren: () => import('./modules/auth/auth.module').then(m =>m.AuthModule)
   },
   {
     path: 'error',
-    loadChildren:
-      () => import('./modules/error/error.module').then(m => m.ErrorModule)
+    loadChildren: () => import('./modules/error/error.module').then(m => m.ErrorModule)
   },
   {
     path: '',
