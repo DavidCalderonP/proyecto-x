@@ -10,6 +10,8 @@ import {ActivitiesComponent} from "../pages/activities/activities.component";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MatTreeModule} from "@angular/material/tree";
+import {CdkTreeModule} from "@angular/cdk/tree";
 
 export const routes: Route[] = [
   {
@@ -31,7 +33,9 @@ export const routes: Route[] = [
     RouterModule.forChild(routes),
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTreeModule,
+    CdkTreeModule
   ]
 })
 export class AfterLoginModule {

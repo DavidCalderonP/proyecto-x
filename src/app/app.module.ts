@@ -17,6 +17,8 @@ import { AccountsComponent } from './modules/pages/accounts/accounts.component';
 import { ContactsComponent } from './modules/pages/contacts/contacts.component';
 import { ActivitiesComponent } from './modules/pages/activities/activities.component';
 import { FooterComponent } from './modules/pages/footer/footer.component';
+import {MatTreeModule} from "@angular/material/tree";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { FooterComponent } from './modules/pages/footer/footer.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTreeModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

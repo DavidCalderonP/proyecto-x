@@ -1,11 +1,40 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a *ngFor="let route of routes"
-         mat-list-item
-         [routerLink]="route.path"
-         (click)="sidenav.toggle()"> {{route.label}}</a>
-    </mat-nav-list>
+    <div style="width: calc(100% - 200px)">
+      <img src="./assets/img/progress.jpeg" alt="">
+    </div>
+<!--    <mat-nav-list>-->
+<!--      <a *ngFor="let route of routes"-->
+<!--         mat-list-item-->
+<!--         [routerLink]="route.path"-->
+<!--         (click)="sidenav.toggle()"> {{route.label}}</a>-->
+<!--    </mat-nav-list>-->
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+      <!-- This is the tree node template for leaf nodes -->
+      <!-- There is inline padding applied to this node using styles.
+        This padding value depends on the mat-icon-button width. -->
+      <mat-tree-node *matTreeNodeDef="let node" (click)="check(node)" matTreeNodeToggle>
+        {{node.name}}
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild" (click)="check(node)">
+        <div class="mat-tree-node">
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          {{node.name}}
+        </div>
+        <!-- There is inline padding applied to this div using styles.
+            This padding value depends on the mat-icon-button width.  -->
+        <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+             role="group">
+          <ng-container matTreeNodeOutlet></ng-container>
+        </div>
+      </mat-nested-tree-node>
+    </mat-tree>
   </mat-sidenav>
   <mat-sidenav-content>
     <div>
@@ -23,16 +52,12 @@
     <footer class="footer">
       <div class="docs-footer-list">
         <div class="docs-footer-logo">
-          <div class="footer-logo"><img
-            src="../../../assets/img/homepage/angular-white-transparent.svg"
-            alt="Angular icon" class="docs-footer-angular-logo"><span
-          ><a href="https://angular.io">Learn Angular</a></span></div>
+          <span>
+            <a href="https://angular.io">Learn Angular</a>
+          </span>
         </div>
-        <div class="docs-footer-version"><img
-          src="../../../assets/img/angular-material-logo.svg"
-          alt="Angular Material icon"
-          class="angular-material-logo"><span
-          class="version">Current Version: 13.3.2+9.sha-b1e1e4b</span></div>
+        <span
+          class="version">Current Version: 13.3.2+9.sha-b1e1e4b</span>
         <div class="docs-footer-copyright">
           <div><span>Powered by Google LLC ©2010-2021.</span><a
             href="https://github.com/angular/components/blob/master/LICENSE">Code licensed under an
