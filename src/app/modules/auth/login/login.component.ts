@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {StorageService} from "../../../configuration/core/storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,13 @@ export class LoginComponent implements OnInit {
   }
 
   form!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private storage: StorageService,
+              private router: Router) {
+    if(this.storage.getUserLogged()){
+      this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -23,14 +31,19 @@ export class LoginComponent implements OnInit {
   initForm(){
     //this.defaultUser = {};
     this.form = this.fb.group({
-      user: [this.defaultUser?.user, [Validators.required, Validators.email, Validators.maxLength(20)]],
+      user: [this.defaultUser?.user, [Validators.required, Validators.email, Validators.maxLength(50)]],
       password: [this.defaultUser?.password, [Validators.required, Validators.minLength(5), Validators.maxLength(15)]]
       }
     );
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.form)
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      console.log("Formulario inválido");
+      return;
+    }
   }
 
   isControlHasError(controlName: string, validationType: string): boolean {
