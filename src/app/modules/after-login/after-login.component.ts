@@ -28,7 +28,22 @@ const TREE_DATA = [
               }
             ]
           },
-          {name: 'Brussels sprouts'},
+          {name: 'Brussels sprouts',
+            children: [
+              {
+                name: 'Broccoli',
+                children: [
+                  {
+                    name: 'Food',
+                  },
+                  {
+                    name: 'Dessert'
+                  }
+                ]
+              },
+              {name: 'Brussels sprouts'},
+            ]
+          },
         ]
       }, {
         name: 'Orange',

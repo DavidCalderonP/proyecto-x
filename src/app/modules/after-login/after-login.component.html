@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
-    <div style="width: calc(100% - 200px)">
-      <img src="./assets/img/progress.jpeg" alt="">
+    <div class="img-fluid">
+      <img style="max-width: 250px" src="./assets/img/progress.jpeg" alt="">
     </div>
 <!--    <mat-nav-list>-->
 <!--      <a *ngFor="let route of routes"-->
@@ -13,11 +13,13 @@
       <!-- This is the tree node template for leaf nodes -->
       <!-- There is inline padding applied to this node using styles.
         This padding value depends on the mat-icon-button width. -->
+
       <mat-tree-node *matTreeNodeDef="let node" (click)="check(node)" matTreeNodeToggle>
-        {{node.name}}
+        <div class="w-100 element">{{node.name}}</div>
+
       </mat-tree-node>
       <!-- This is the tree node template for expandable nodes -->
-      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild" (click)="check(node)">
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
         <div class="mat-tree-node">
           <button mat-icon-button matTreeNodeToggle
                   [attr.aria-label]="'Toggle ' + node.name">

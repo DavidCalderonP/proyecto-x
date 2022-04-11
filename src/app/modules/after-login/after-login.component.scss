@@ -28,10 +28,17 @@ mat-sidenav-content{
  */
 .example-tree div[role=group] > .mat-tree-node {
   padding-left: 45px;
+  border-bottom: 2px gainsboro;
 }
 
 .mat-tree-node {
   padding: 0 20px;
+
+  .element{
+    border-bottom: solid 1px gainsboro;
+    width: 100%;
+    cursor: pointer;
+  }
 
   &:hover {
     background-color: gainsboro;
