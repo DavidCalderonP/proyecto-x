@@ -12,8 +12,13 @@ import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-import { AfterLoginComponent } from './modules/after-login/after-login.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { AccountsComponent } from './modules/pages/accounts/accounts.component';
+import { ContactsComponent } from './modules/pages/contacts/contacts.component';
+import { ActivitiesComponent } from './modules/pages/activities/activities.component';
+import { FooterComponent } from './modules/pages/footer/footer.component';
+import {MatTreeModule} from "@angular/material/tree";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -22,18 +27,23 @@ import {ReactiveFormsModule} from "@angular/forms";
     ErrorComponent,
     Error404Component,
     Error500Component,
-    AfterLoginComponent
+    AccountsComponent,
+    ContactsComponent,
+    ActivitiesComponent,
+    FooterComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatTreeModule,
+    MatIconModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

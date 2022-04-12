@@ -1,0 +1,17 @@
+function getPath(object, search) {
+    if (object.id === search) return [object.name];
+    else if ((object.children) || Array.isArray(object)) {
+        let children = Array.isArray(object) ? object : object.children;
+        for (let child of children) {
+            let result = getPath(child, search);
+            if (result) {
+                if (object.id )result.unshift(object.name);
+                return result;
+            }
+        }
+    }
+}
+
+//const result = ['parent 1', 'c1', 'grand 1']
+const result = getPath(data, 'g1');
+console.log(result);

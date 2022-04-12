@@ -1,25 +1,44 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {StorageService} from "./storage.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private authSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  private currentUser: BehaviorSubject<any>;
 
-  constructor(private storage: StorageService) {
-    this.authSubject.next(this.storage.getUserLogged());
+  constructor() {
+    this.currentUser = new BehaviorSubject<any>(null);
   }
 
-  get getAuth():any{
-    return this.authSubject.value;
-  }
-
-  set setAuth(user:any){
-    if(user){
-      this.authSubject.next(user);
+  get getCurrentUser(){
+    const user =this.getFromStorage();
+    if(user!==null){
+      this.setCurrentUser(user)
     }
+    return this.currentUser.value;
+  }
+
+  setCurrentUser(user: any){
+    console.log("metiendo el valor ", user)
+    this.currentUser.next(user);
+  }
+
+  public storeUser(user: any){
+    if(user){
+      localStorage.setItem('authenticated', JSON.stringify(user));
+      this.setCurrentUser(user);
+    }
+  }
+
+  public getFromStorage(){
+    const user = localStorage.getItem('authenticated')
+    return user ? JSON.parse(user) : null;
+  }
+
+  public logout(){
+    this.currentUser.next(null);
+    localStorage.removeItem('authenticated');
   }
 }

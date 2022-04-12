@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {Error404Component} from "./modules/error/error404/error404.component";
+import {AfterLoginComponent} from "./modules/after-login/after-login.component";
+import {AuthGuard} from "./modules/auth/auth.guard";
 
 const routes: Routes = [
   {
@@ -13,8 +15,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'auth',
-    pathMatch: 'full'
+    canActivate: [AuthGuard],
+    loadChildren: ()=> import('./modules/after-login/after-login.module').then(m=>m.AfterLoginModule)
   },
   {
     path: '**',
