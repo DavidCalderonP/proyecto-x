@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Route, Router, RouterModule} from "@angular/router";
+import {Route, RouterModule} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 const Routes: Route[] = [
   {
@@ -22,12 +24,14 @@ const Routes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(Routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule
   ],
   exports:[
     RouterModule
