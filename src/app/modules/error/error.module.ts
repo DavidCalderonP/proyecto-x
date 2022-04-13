@@ -11,21 +11,25 @@ export const routes: Route[] = [
     component: ErrorComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'error-404',
+        pathMatch: 'full'
+      },
+      {
         path: 'error-404',
         component: Error404Component
       },
-
+      {
+        path: 'error-500',
+        component: Error500Component
+      },
+      {
+        path: '**',
+        redirectTo: 'error-404',
+        pathMatch: 'full'
+      }
     ]
-  },
-  {
-    path: 'error-500',
-    component: Error500Component
   }
-  /*{
-    path: '**',
-    redirectTo: 'error-404',
-    pathMatch: 'full'
-  }*/
 ];
 
 @NgModule({

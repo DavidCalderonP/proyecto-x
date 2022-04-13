@@ -48,26 +48,18 @@
         </button>
       </mat-toolbar>
       <div id="page-container" style="padding: 20px">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-    <footer class="footer">
-      <div class="docs-footer-list">
-        <div class="docs-footer-logo">
-          <span>
-            <a href="https://angular.io">Learn Angular</a>
-          </span>
-        </div>
-        <span
-          class="version">Current Version: 13.3.2+9.sha-b1e1e4b</span>
-        <div class="docs-footer-copyright">
-          <div><span>Powered by Google LLC ©2010-2021.</span><a
-            href="https://github.com/angular/components/blob/master/LICENSE">Code licensed under an
-            MIT-style License.</a><span>Documentation licensed under CC BY 4.0.</span></div>
-        </div>
-      </div>
-    </footer>
+        <mat-card>
+          <router-outlet></router-outlet>
+        </mat-card>
 
+      </div>
+      <!--<div style="text-align: end">
+        <button mat-fab color="primary" aria-label="Example icon button with a home icon">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>-->
+    </div>
+    <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

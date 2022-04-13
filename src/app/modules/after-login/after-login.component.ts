@@ -1,63 +1,10 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {NestedTreeControl} from "@angular/cdk/tree";
 import {MatTreeNestedDataSource} from "@angular/material/tree";
+import {MenuConfig, Menu} from "../../configuration/core/MenuConfig";
 
 
-const TREE_DATA = [
-  {
-    name: 'Fruit',
-    children: [
-      {name: 'Apple'},
-      {name: 'Banana'},
-      {name: 'Fruit loops'},
-    ]
-  }, {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [
-          {
-            name: 'Broccoli',
-            children: [
-              {
-                name: 'Food',
-              },
-              {
-                name: 'Dessert'
-              }
-            ]
-          },
-          {name: 'Brussels sprouts',
-            children: [
-              {
-                name: 'Broccoli',
-                children: [
-                  {
-                    name: 'Food',
-                  },
-                  {
-                    name: 'Dessert'
-                  }
-                ]
-              },
-              {name: 'Brussels sprouts'},
-            ]
-          },
-        ]
-      }, {
-        name: 'Orange',
-        children: [
-          {name: 'Pumpkins'},
-          {name: 'Carrots'},
-        ]
-      },
-    ]
-  },
-  {
-    name: 'Junk Food'
-  }
-];
+
 
 @Component({
   selector: 'app-after-login',
@@ -70,7 +17,7 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
   dataSource = new MatTreeNestedDataSource<any>();
 
   constructor() {
-    this.dataSource.data = TREE_DATA;
+    this.dataSource.data = MenuConfig;
   }
 
   hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
@@ -86,6 +33,10 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
 
   check(node: any){
     console.log(node)
+  }
+
+  print(data: any){
+    console.log(data)
   }
 
 }
