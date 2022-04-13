@@ -39,4 +39,8 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
     console.log(data)
   }
 
+  openProfile(){
+
+  }
+
 }

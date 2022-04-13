@@ -14,6 +14,8 @@ import {MatTreeModule} from "@angular/material/tree";
 import {CdkTreeModule} from "@angular/cdk/tree";
 import {FooterComponent} from "./footer/footer.component";
 import {MatCardModule} from "@angular/material/card";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatMenuModule} from "@angular/material/menu";
 
 export const routes: Route[] = [
   {
@@ -44,7 +46,9 @@ export const routes: Route[] = [
     MatIconModule,
     MatTreeModule,
     CdkTreeModule,
-    MatCardModule
+    MatCardModule,
+    MatChipsModule,
+    MatMenuModule
   ]
 })
 export class AfterLoginModule {
