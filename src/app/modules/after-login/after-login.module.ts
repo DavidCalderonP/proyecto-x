@@ -16,15 +16,30 @@ import {FooterComponent} from "./footer/footer.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatMenuModule} from "@angular/material/menu";
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Route[] = [
   {
     path: '',
     component: AfterLoginComponent,
     children: [
-      {path: 'accounts', component: AccountsComponent},
-      {path: 'contacts', component: ContactsComponent},
-      {path: 'activities', component: ActivitiesComponent}
+      {
+        path: 'accounts',
+        loadChildren: () => import('./accounts/accounts.module').then(m=>m.AccountsModule)
+      },
+      {
+        path: 'contacts',
+        component: ContactsComponent
+      },
+      {
+        path: 'activities',
+        component: ActivitiesComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'accounts',
+        pathMatch: 'full'
+      }
     ]
   }
 ];
@@ -32,10 +47,10 @@ export const routes: Route[] = [
 @NgModule({
   declarations: [
     AfterLoginComponent,
-    AccountsComponent,
     ContactsComponent,
     ActivitiesComponent,
-    FooterComponent],
+    FooterComponent,
+    ProfileComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

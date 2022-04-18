@@ -1,10 +1,9 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NestedTreeControl} from "@angular/cdk/tree";
 import {MatTreeNestedDataSource} from "@angular/material/tree";
 import {MenuConfig, Menu} from "../../configuration/core/MenuConfig";
-
-
-
+import {Router} from "@angular/router";
+import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-after-login',
@@ -13,10 +12,13 @@ import {MenuConfig, Menu} from "../../configuration/core/MenuConfig";
 })
 export class AfterLoginComponent implements OnInit, AfterViewInit {
 
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+
   treeControl = new NestedTreeControl<any>(node => node.children);
   dataSource = new MatTreeNestedDataSource<any>();
 
-  constructor() {
+  constructor(private router: Router) {
+    //console.log(MenuConfig.filter(x=>x.show))
     this.dataSource.data = MenuConfig;
   }
 
@@ -31,12 +33,17 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
     pageContainer.style.minHeight = `calc(100vh - ${footer.clientHeight}px - ${toolbar.clientHeight}px - 40px`;
   }
 
-  check(node: any){
-    console.log(node)
+  redirect(node: Menu){
+    // console.log(node);
+    this.router.navigate([node.link_segment]).then(()=>{
+      // console.log(res)
+      this.sidenav.close();
+    });
   }
 
-  print(data: any){
-    console.log(data)
+  open(sidenav: any){
+    // console.log(sidenav)
+    this.sidenav.open();
   }
 
   openProfile(){

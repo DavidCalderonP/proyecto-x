@@ -1,102 +1,36 @@
-export var MenuConfig = [
+export var MenuConfig: Array<Menu> = [
   {
-    name: 'Fruit',
-    children: [
-      {name: 'Apple'},
-      {name: 'Banana'},
-      {name: 'Fruit loops'},
-    ]
-  },
-  {
-    name: 'Vegetables',
+    name: 'Accounts',
+    link_segment: 'accounts',
     children: [
       {
-        name: 'Green',
+        name: 'Dashboard',
+        link_segment: 'accounts/dashboard'
+      },
+      {
+        name: 'Reports',
+        link_segment: 'accounts/reports',
         children: [
           {
-            name: 'Broccoli',
-            children: [
-              {
-                name: 'Food',
-              },
-              {
-                name: 'Dessert',
-                children: [
-                  {
-                    name: 'Brussels sprouts',
-                    children: [
-                      {
-                        name: 'Broccoli',
-                        children: [
-                          {
-                            name: 'Food',
-                          },
-                          {
-                            name: 'Dessert',
-                            children: [
-                              {
-                                name: 'Brussels sprouts',
-                                children: [
-                                  {
-                                    name: 'Broccoli',
-                                    children: [
-                                      {
-                                        name: 'Food',
-                                        children: [
-                                          {
-                                            name: 'Brussels sprouts',
-                                            children: [
-                                              {
-                                                name: 'Broccoli',
-                                                children: [
-                                                  {
-                                                    name: 'Food',
-                                                  },
-                                                  {
-                                                    name: 'Dessert'
-                                                  }
-                                                ]
-                                              },
-                                              {name: 'Brussels sprouts'},
-                                            ]
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        name: 'Dessert'
-                                      }
-                                    ]
-                                  },
-                                  {name: 'Brussels sprouts'},
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {name: 'Brussels sprouts'},
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
+            name: 'Create Report',
+            link_segment: 'accounts/reports/create'
+          }
         ]
-      }, {
-        name: 'Orange',
-        children: [
-          {name: 'Pumpkins'},
-          {name: 'Carrots'},
-        ]
-      },
+      }
     ]
   },
   {
-    name: 'Junk Food'
+    name: 'Activities',
+    link_segment: 'activities',
+  },
+  {
+    name: 'Contacts',
+    link_segment: 'contacts'
   }
 ];
 
 export interface Menu{
   name: string;
-  children: Array<Menu>;
+  link_segment: string;
+  children?: Array<Menu>;
 }

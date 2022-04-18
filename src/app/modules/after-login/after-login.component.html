@@ -1,20 +1,10 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav>
+  <mat-sidenav id="sidenav" #sidenav>
     <div class="img-fluid">
       <img style="max-width: 250px" src="./assets/img/progress.jpeg" alt="">
     </div>
-    <!--    <mat-nav-list>-->
-    <!--      <a *ngFor="let route of routes"-->
-    <!--         mat-list-item-->
-    <!--         [routerLink]="route.path"-->
-    <!--         (click)="sidenav.toggle()"> {{route.label}}</a>-->
-    <!--    </mat-nav-list>-->
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-      <!-- This is the tree node template for leaf nodes -->
-      <!-- There is inline padding applied to this node using styles.
-        This padding value depends on the mat-icon-button width. -->
-
-      <mat-tree-node *matTreeNodeDef="let node" (click)="check(node)" matTreeNodeToggle>
+      <mat-tree-node *matTreeNodeDef="let node" (click)="redirect(node)" matTreeNodeToggle>
         <div class="w-100 element">{{node.name}}</div>
 
       </mat-tree-node>
@@ -29,8 +19,6 @@
           </button>
           {{node.name}}
         </div>
-        <!-- There is inline padding applied to this div using styles.
-            This padding value depends on the mat-icon-button width.  -->
         <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
              role="group">
           <ng-container matTreeNodeOutlet></ng-container>
@@ -43,29 +31,22 @@
       <mat-toolbar color="primary">
         <button mat-icon-button
                 aria-label="Menu"
-                (click)="sidenav.open()">
+                (click)="open(sidenav)">
           <mat-icon>menu</mat-icon>
         </button>
-        <div class="profile">
-          <mat-chip-list aria-label="Dog selection">
-            <mat-chip [matMenuTriggerFor]="menu" #menuTrigger color="primary">
-              <mat-menu #menu="matMenu">
-                <p>Profile Data!</p>
-              </mat-menu>
-              <mat-chip-avatar>
-                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
-              </mat-chip-avatar>
-            </mat-chip>
-          </mat-chip-list>
-          <!--
-          <button mat-button [matMenuTriggerFor]="menu" #menuTrigger>Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="openDialog()">Open dialog</button>
-</mat-menu>
-          -->
-
-          <!--          <button>Click!</button>-->
-        </div>
+<!--        <div class="profile">-->
+<!--          <mat-chip-list aria-label="Dog selection">-->
+<!--            <mat-chip [matMenuTriggerFor]="menu" #menuTrigger color="primary">-->
+<!--              <mat-menu #menu="matMenu">-->
+<!--                <p>Profile Data!</p>-->
+<!--              </mat-menu>-->
+<!--              <mat-chip-avatar>-->
+<!--                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>-->
+<!--              </mat-chip-avatar>-->
+<!--            </mat-chip>-->
+<!--          </mat-chip-list>-->
+<!--        </div>-->
+        <app-profile></app-profile>
       </mat-toolbar>
       <div id="page-container" style="padding: 20px">
         <mat-card>

@@ -12,6 +12,12 @@
     display: inline-flex;
     gap: 3rem;
     justify-content: space-between;
+
+    @media(max-width: 568px) {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
   }
 
   .docs-footer-copyright{

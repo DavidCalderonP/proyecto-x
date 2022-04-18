@@ -1,0 +1,25 @@
+:host{
+  width: 100%;
+}
+
+.profile {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  mat-chip {
+    padding: 0 !important;
+    cursor: pointer;
+    border-radius: 5px !important;
+
+    mat-chip-avatar {
+      margin: 4px !important;
+      border-radius: 15% !important;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
