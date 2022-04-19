@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {NestedTreeControl} from "@angular/cdk/tree";
 import {MatTreeNestedDataSource} from "@angular/material/tree";
 import {MenuConfig, Menu} from "../../configuration/core/MenuConfig";
@@ -22,7 +22,8 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
     this.dataSource.data = MenuConfig;
   }
 
-  hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: any) => !!node.children && node.children.length > 0 && node.show_children;
+
   ngOnInit(): void {
   }
 
@@ -30,7 +31,7 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
     let footer = document.getElementsByTagName('footer')[0] as HTMLElement;
     let pageContainer = document.getElementById('page-container') as HTMLElement;
     let toolbar = document.getElementsByTagName('mat-toolbar')[0] as HTMLElement;
-    pageContainer.style.minHeight = `calc(100vh - ${footer.clientHeight}px - ${toolbar.clientHeight}px - 40px`;
+    pageContainer.style.minHeight = `calc(100vh - ${footer.clientHeight}px - ${toolbar.clientHeight}px`;
   }
 
   redirect(node: Menu){
@@ -44,6 +45,10 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
   open(sidenav: any){
     // console.log(sidenav)
     this.sidenav.open();
+  }
+
+  toUp(){
+    document.getElementById('page-container')?.scrollIntoView({behavior: "smooth"})
   }
 
   openProfile(){

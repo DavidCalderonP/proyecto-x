@@ -4,7 +4,7 @@
       <img style="max-width: 250px" src="./assets/img/progress.jpeg" alt="">
     </div>
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-      <mat-tree-node *matTreeNodeDef="let node" (click)="redirect(node)" matTreeNodeToggle>
+      <mat-tree-node *matTreeNodeDef="let node;" (click)="redirect(node)" matTreeNodeToggle>
         <div class="w-100 element">{{node.name}}</div>
 
       </mat-tree-node>
@@ -26,7 +26,7 @@
       </mat-nested-tree-node>
     </mat-tree>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content id="sidenav-content">
     <div>
       <mat-toolbar color="primary">
         <button mat-icon-button
@@ -52,7 +52,7 @@
         <mat-card>
           <router-outlet></router-outlet>
         </mat-card>
-
+        <button class="btn" (click)="toUp()" id="myBtn" title="Go to top"><mat-icon>arrow_upward</mat-icon></button>
       </div>
       <!--<div style="text-align: end">
         <button mat-fab color="primary" aria-label="Example icon button with a home icon">
@@ -60,6 +60,7 @@
         </button>
       </div>-->
     </div>
+
     <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -23,3 +23,13 @@
     }
   }
 }
+
+::ng-deep .mat-menu-panel{
+  min-height: inherit !important;
+}
+
+/*
+::ng-deep .cdk-overlay-backdrop{
+  position: relative;
+}
+*/
