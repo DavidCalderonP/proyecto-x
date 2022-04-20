@@ -52,6 +52,9 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
     document.getElementById('page-container')?.scrollIntoView({behavior: "smooth"})
   }
 
+  print(node: Menu){
+    console.log(node)
+  }
   hasChildren(node: Menu){
     console.log(node.hasOwnProperty('children'))
     return node.hasOwnProperty('children');

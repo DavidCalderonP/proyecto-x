@@ -67,7 +67,8 @@ export const MenuConfig: Menu[] = [
     name: "Section3",
     children: [
       { id: 7,
-        name: "Section3-1" },
+        name: "Section3-1"
+      },
       {
         id: 8,
         name: "Section3-2",
