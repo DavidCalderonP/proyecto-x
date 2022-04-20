@@ -16,6 +16,7 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
 
   treeControl = new NestedTreeControl<any>(node => node.children);
   dataSource = new MatTreeNestedDataSource<any>();
+  list = MenuConfig
 
   constructor(private router: Router) {
     //console.log(MenuConfig.filter(x=>x.show))
@@ -49,6 +50,11 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
 
   toUp(){
     document.getElementById('page-container')?.scrollIntoView({behavior: "smooth"})
+  }
+
+  hasChildren(node: Menu){
+    console.log(node.hasOwnProperty('children'))
+    return node.hasOwnProperty('children');
   }
 
   openProfile(){
