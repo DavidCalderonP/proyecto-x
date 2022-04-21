@@ -52,8 +52,11 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
     document.getElementById('page-container')?.scrollIntoView({behavior: "smooth"})
   }
 
-  print(node: Menu){
-    console.log(node)
+  expandOrCollapse(node: Menu){
+    let icon = document.getElementById('icon'+node.id) as HTMLElement;
+    let degrees = this.strToBool(document.getElementById('button'+node.id)?.getAttribute('aria-expanded') || '') ? 180 : 0;
+    icon.style.transform = `rotate(${degrees}deg)`;
+    icon.style.webkitTransition = '-webkit-transform 0.3s ease-in'
   }
   hasChildren(node: Menu){
     console.log(node.hasOwnProperty('children'))
@@ -62,6 +65,15 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
 
   openProfile(){
 
+  }
+
+  strToBool(bool: string = ''){
+    switch(bool){
+      case 'true':
+        return true;
+      default:
+        return false;
+    }
   }
 
 }
