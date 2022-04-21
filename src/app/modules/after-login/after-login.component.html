@@ -39,26 +39,19 @@
       </ul>
       <ng-template #recursiveListTmpl let-list="list">
         <li class="list-element" *ngFor="let item of list;">
-<!--          <div style="display: table; height: 40px; overflow: hidden;">-->
-<!--            <div >-->
-              <div class="element" *ngIf="!(!!item.children && item.children.length > 0)">{{item.name}}</div>
-<!--            </div>-->
-<!--          </div>-->
+          <div class="element" *ngIf="!(!!item.children && item.children.length > 0)">{{item.name}}</div>
           <ul class="has-children" *ngIf="!!item.children && item.children.length > 0">
-<!--            <div style="display: table; height: 40px; overflow: hidden;">-->
-<!--              <div style="display: table-cell; vertical-align: middle;width: 100%;-->
-<!--    height: 40px;">-->
-                <div class="text-nowrap element" [id]="'heading'+item.id">
-                  <button class="expandible" [id]="'button'+item.id"
-                          (click)="expandOrCollapse(item)" [attr.data-bs-target]="'#collapse'+item.id"
-                          [attr.aria-controls]="'collapse'+item.id" type="button"
-                          data-bs-toggle="collapse" aria-expanded="true">
-                    {{ item.name }}
-                    <mat-icon [id]="'icon'+item.id">expand_more</mat-icon>
-                  </button>
-                </div>
-<!--              </div>-->
-<!--            </div>-->
+            <div class="text-nowrap element" [id]="'heading'+item.id">
+              <button class="expandible" [id]="'button'+item.id"
+                      (click)="expandOrCollapse(item)" [attr.data-bs-target]="'#collapse'+item.id"
+                      [attr.aria-controls]="'collapse'+item.id" type="button"
+                      data-bs-toggle="collapse" aria-expanded="true">
+                {{ item.name }}
+                <mat-icon [id]="'icon'+item.id">expand_more</mat-icon>
+              </button>
+            </div>
+            <!--              </div>-->
+            <!--            </div>-->
             <!--              <mat-icon>expand_less</mat-icon>-->
             <div [id]="'collapse'+item.id" class="collapse" aria-labelledby="headingOne"
                  [attr.aria.labelledby]="'heading'+item.id">
@@ -104,18 +97,6 @@
                 (click)="open(sidenav)">
           <mat-icon>menu</mat-icon>
         </button>
-        <!--        <div class="profile">-->
-        <!--          <mat-chip-list aria-label="Dog selection">-->
-        <!--            <mat-chip [matMenuTriggerFor]="menu" #menuTrigger color="primary">-->
-        <!--              <mat-menu #menu="matMenu">-->
-        <!--                <p>Profile Data!</p>-->
-        <!--              </mat-menu>-->
-        <!--              <mat-chip-avatar>-->
-        <!--                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>-->
-        <!--              </mat-chip-avatar>-->
-        <!--            </mat-chip>-->
-        <!--          </mat-chip-list>-->
-        <!--        </div>-->
         <app-profile></app-profile>
       </mat-toolbar>
       <div id="page-container" style="padding: 20px">
@@ -126,13 +107,7 @@
           <mat-icon>arrow_upward</mat-icon>
         </button>
       </div>
-      <!--<div style="text-align: end">
-        <button mat-fab color="primary" aria-label="Example icon button with a home icon">
-          <mat-icon>home</mat-icon>
-        </button>
-      </div>-->
     </div>
-
     <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

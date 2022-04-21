@@ -1,6 +1,4 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {NestedTreeControl} from "@angular/cdk/tree";
-import {MatTreeNestedDataSource} from "@angular/material/tree";
 import {MenuConfig, Menu} from "../../configuration/core/MenuConfig";
 import {Router} from "@angular/router";
 import {MatSidenav} from "@angular/material/sidenav";
@@ -14,16 +12,16 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
-  treeControl = new NestedTreeControl<any>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<any>();
+  // treeControl = new NestedTreeControl<any>(node => node.children);
+  // dataSource = new MatTreeNestedDataSource<any>();
   list = MenuConfig
 
   constructor(private router: Router) {
     //console.log(MenuConfig.filter(x=>x.show))
-    this.dataSource.data = MenuConfig;
+    //this.dataSource.data = MenuConfig;
   }
 
-  hasChild = (_: number, node: any) => !!node.children && node.children.length > 0 && node.show_children;
+  // hasChild = (_: number, node: any) => !!node.children && node.children.length > 0 && node.show_children;
 
   ngOnInit(): void {
   }
@@ -36,15 +34,12 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
   }
 
   redirect(node: Menu){
-    // console.log(node);
     this.router.navigate([node.link_segment]).then(()=>{
-      // console.log(res)
       this.sidenav.close();
     });
   }
 
   open(sidenav: any){
-    // console.log(sidenav)
     this.sidenav.open();
   }
 
@@ -58,22 +53,9 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
     icon.style.transform = `rotate(${degrees}deg)`;
     icon.style.webkitTransition = '-webkit-transform 0.3s ease-in'
   }
-  hasChildren(node: Menu){
-    console.log(node.hasOwnProperty('children'))
-    return node.hasOwnProperty('children');
-  }
-
-  openProfile(){
-
-  }
 
   strToBool(bool: string = ''){
-    switch(bool){
-      case 'true':
-        return true;
-      default:
-        return false;
-    }
+    return bool=='true';
   }
 
 }
