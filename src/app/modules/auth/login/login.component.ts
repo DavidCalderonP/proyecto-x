@@ -45,7 +45,13 @@ export class LoginComponent implements OnInit {
       return;
     }
     console.log(this.form)
-    this.authService.storeUser(this.form.value)
+    const user = {
+      name: 'David Alonso',
+      lastname: 'Calderon Peña',
+      profile_img: "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      ...this.form.value
+    }
+    this.authService.storeUser(user)
     this.router.navigate(['/']);
   }
 

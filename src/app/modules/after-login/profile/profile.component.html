@@ -2,12 +2,17 @@
   <mat-chip-list aria-label="Dog selection">
     <mat-chip [matMenuTriggerFor]="menu" #menuTrigger color="primary">
       <mat-menu #menu="matMenu">
-        <div class="container">
-          <p>dummie!</p>
+        <div class=" container-fluid content">
+          <img src="{{currentUser.profile_img}}" alt="">
+          <p>{{currentUser.name + ' ' +  currentUser.lastname}}</p>
+        </div>
+        <mat-divider class="m-2"></mat-divider>
+        <div class="container text-end">
+          <button class="btn btn-danger" (click)="logout()">Cerrar sesión</button>
         </div>
       </mat-menu>
       <mat-chip-avatar>
-        <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
+        <img src="{{currentUser.profile_img}}" alt="Photo of a Shiba Inu"/>
       </mat-chip-avatar>
     </mat-chip>
   </mat-chip-list>

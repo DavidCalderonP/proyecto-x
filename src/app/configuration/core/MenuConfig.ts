@@ -1,45 +1,59 @@
-/*export var MenuConfig: Array<Menu> = [
+export var MenuConfig: Array<Menu> = [
   {
+    id: 1,
     name: 'Accounts',
     link_segment: 'accounts',
+    icon: 'search',
     show_children: true,
     hidden: false,
     children: [
       {
+        id: 2,
         name: 'Dashboard',
         link_segment: 'accounts/dashboard',
+        icon: 'home',
         show_children: true,
-        hidden: false
+        hidden: false,
+        children: [
+          {
+            id: 4,
+            name: 'Create Account',
+            link_segment: 'accounts/create',
+            icon: 'favorite_border',
+            show_children: true,
+            hidden: false
+          }
+        ]
       },
       {
+        id: 3,
         name: 'Reports',
         link_segment: 'accounts/reports',
-        show_children: true,
-        hidden: false
-      },
-      {
-        name: 'Create Account',
-        link_segment: 'accounts/create',
+        icon: 'settings',
         show_children: true,
         hidden: false
       }
     ]
   },
   {
+    id: 5,
     name: 'Activities',
     link_segment: 'activities',
+    icon: 'fingerprint',
     show_children: true,
     hidden: false
   },
   {
+    id: 6,
     name: 'Contacts',
     link_segment: 'contacts',
+    icon: 'dashboard',
     show_children: true,
     hidden: false
   }
-];*/
+];
 
-export const MenuConfig: Menu[] = [
+/*export const MenuConfig: Menu[] = [
   {
     id: 1,
     name: "Section1"
@@ -117,12 +131,13 @@ export const MenuConfig: Menu[] = [
       }
     ]
   }
-];
+];*/
 
 export interface Menu{
   id: number;
   name: string;
-  link_segment?: string;
+  link_segment: string;
+  icon?: string;
   show_children?: boolean;
   hidden?: boolean;
   children?: Array<Menu>;

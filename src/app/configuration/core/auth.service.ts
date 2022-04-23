@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class AuthService {
 
   private currentUser: BehaviorSubject<any>;
 
-  constructor() {
+  constructor(private router: Router) {
     this.currentUser = new BehaviorSubject<any>(null);
   }
 
@@ -21,7 +22,6 @@ export class AuthService {
   }
 
   setCurrentUser(user: any){
-    console.log("metiendo el valor ", user)
     this.currentUser.next(user);
   }
 

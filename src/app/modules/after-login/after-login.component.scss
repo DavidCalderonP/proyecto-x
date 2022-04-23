@@ -5,6 +5,12 @@ mat-sidenav-container {
   }
   mat-sidenav-content {
     height: 100vh;
+
+    mat-toolbar{
+      div{
+        font-size: 11pt;
+      }
+    }
   }
 
   .menu-container {
@@ -13,6 +19,7 @@ mat-sidenav-container {
     .list-element{
 
       .element{
+        opacity: .7;
         display: table-cell;
         vertical-align: middle;
         width: 100%;
@@ -23,9 +30,12 @@ mat-sidenav-container {
           //transition: all .3s ease-out;
           //background-color: rgba(200,200,200,0.1);
           cursor: pointer;
+          opacity: 1;
           border-radius: 5px;
-          transform-style:preserve-3d;
-          animation: scale-div 0.4s infinite ease-out alternate;
+          //transform: scale3d(1.25,1.25,1);
+          //animation: all 1s  ease-out;
+          //transform-style:preserve-3d;
+          //animation: scale-div 0.4s infinite ease-out alternate;
           //border: dashed 1px gray;
 
         }
@@ -56,59 +66,6 @@ mat-sidenav-container {
   }
 }
 
-
-/*mat-toolbar{
-  .profile{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-}*/
-
-/*
-.example-tree-invisible {
-  display: none;
-}
-
-.example-tree ul,
-.example-tree li {
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style-type: none;
-}
-
-!*
- * This padding sets alignment of the nested nodes.
- *!
-.example-tree .mat-nested-tree-node div[role=group] {
-  padding-left: 15px;
-}
-
-!*
- * Padding for leaf nodes.
- * Leaf nodes need to have padding so as to align with other non-leaf nodes
- * under the same parent.
- *!
-.example-tree div[role=group] > .mat-tree-node {
-  padding-left: 45px;
-  border-bottom: 2px gainsboro;
-}
-
-.mat-tree-node {
-  padding: 0 20px;
-
-  .element{
-    border-bottom: solid 1px gainsboro;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  &:hover {
-    background-color: gainsboro;
-    border-radius: 10px;
-  }
-}*/
-
 #myBtn {
   position: fixed;
   bottom: 50px;
@@ -118,8 +75,8 @@ mat-sidenav-container {
   color: white;
 }
 
-@keyframes scale-div {
+/*@keyframes scale-div {
   to {
     transform: scale3d(1.25,1.25,1);
   }
-}
+}*/

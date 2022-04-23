@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MenuConfig, Menu} from "../../configuration/core/MenuConfig";
 import {Router} from "@angular/router";
 import {MatSidenav} from "@angular/material/sidenav";
+import {ConfigurationService} from "../../configuration/core/configuration.service";
 
 @Component({
   selector: 'app-after-login',
@@ -15,8 +16,9 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
   // treeControl = new NestedTreeControl<any>(node => node.children);
   // dataSource = new MatTreeNestedDataSource<any>();
   list = MenuConfig
+  breadcrumbs: Menu[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private configuration: ConfigurationService) {
     //console.log(MenuConfig.filter(x=>x.show))
     //this.dataSource.data = MenuConfig;
   }
@@ -35,8 +37,15 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
 
   redirect(node: Menu){
     this.router.navigate([node.link_segment]).then(()=>{
-      this.sidenav.close();
+      this.sidenav.close().then(()=>{
+        this.loadBreadcrumbs(node.link_segment);
+      });
     });
+  }
+
+  loadBreadcrumbs(search: string){
+    this.breadcrumbs = this.configuration.getBreadcrumbs(this.list ,search);
+    console.log(this.breadcrumbs)
   }
 
   open(sidenav: any){
@@ -48,9 +57,10 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
   }
 
   expandOrCollapse(node: Menu){
+    const sidenavHeight = document.getElementById('sidenav')?.clientWidth || 0;
     let icon = document.getElementById('icon'+node.id) as HTMLElement;
-    let degrees = this.strToBool(document.getElementById('button'+node.id)?.getAttribute('aria-expanded') || '') ? 180 : 0;
-    icon.style.transform = `rotate(${degrees}deg)`;
+    let degrees = this.strToBool(document.getElementById('button'+node.id)?.getAttribute('aria-expanded') || '');
+    icon.style.transform = `translateX(${ sidenavHeight-icon.getBoundingClientRect().right}px) rotate(${degrees ? 180 : 0}deg)`;
     icon.style.webkitTransition = '-webkit-transform 0.3s ease-in'
   }
 

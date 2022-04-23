@@ -1,4 +1,4 @@
-:host{
+:host {
   width: 100%;
 }
 
@@ -8,9 +8,12 @@
   justify-content: flex-end;
 
   mat-chip {
+
     padding: 0 !important;
     cursor: pointer;
     border-radius: 5px !important;
+
+
 
     mat-chip-avatar {
       margin: 4px !important;
@@ -24,7 +27,21 @@
   }
 }
 
-::ng-deep .mat-menu-panel{
+.content{
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  p{
+    align-self: center;
+  }
+  img{
+    width: 3rem;
+    border-radius: 15%;
+  }
+}
+
+::ng-deep .mat-menu-panel {
   min-height: inherit !important;
 }
 

@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container id="sidenav-container">
   <mat-sidenav id="sidenav" #sidenav>
     <div class="img-fluid">
       <img style="max-width: 250px" src="./assets/img/progress.jpeg" alt="">
@@ -38,10 +38,10 @@
         ></ng-container>
       </ul>
       <ng-template #recursiveListTmpl let-list="list">
-        <li class="list-element" *ngFor="let item of list;">
-          <div class="element" *ngIf="!(!!item.children && item.children.length > 0)">{{item.name}}</div>
+        <li [id]="'element'+item.id" class="list-element" *ngFor="let item of list;">
+          <div (click)="redirect(item)" class="element" *ngIf="!(!!item.children && item.children.length > 0)"><mat-icon style="vertical-align: bottom"> {{item.icon}}</mat-icon>{{item.name}}</div>
           <ul class="has-children" *ngIf="!!item.children && item.children.length > 0">
-            <div class="text-nowrap element" [id]="'heading'+item.id">
+            <div class="text-nowrap element" [id]="'heading'+item.id"><mat-icon style="vertical-align: bottom"> {{item.icon}}</mat-icon>
               <button class="expandible" [id]="'button'+item.id"
                       (click)="expandOrCollapse(item)" [attr.data-bs-target]="'#collapse'+item.id"
                       [attr.aria-controls]="'collapse'+item.id" type="button"
@@ -55,7 +55,7 @@
             <!--              <mat-icon>expand_less</mat-icon>-->
             <div [id]="'collapse'+item.id" class="collapse" aria-labelledby="headingOne"
                  [attr.aria.labelledby]="'heading'+item.id">
-              <div style="padding: 0.5rem 1.25rem;">
+              <div style="padding: 0.5rem 1rem;">
                 <ng-container
                   *ngTemplateOutlet="recursiveListTmpl; context:{ list: item.children }"
                 ></ng-container>
@@ -90,13 +90,19 @@
      </mat-tree>-->
   </mat-sidenav>
   <mat-sidenav-content id="sidenav-content">
-    <div>
+
       <mat-toolbar color="primary">
         <button mat-icon-button
                 aria-label="Menu"
                 (click)="open(sidenav)">
           <mat-icon>menu</mat-icon>
         </button>
+        <div>
+          <span *ngFor="let breadcrumb of breadcrumbs;let i = index; let last = last;">
+            <a class="text-white font-size-10" href="">{{breadcrumb.name}}</a>
+            <span *ngIf="!last"> • </span>
+          </span>
+        </div>
         <app-profile></app-profile>
       </mat-toolbar>
       <div id="page-container" style="padding: 20px">
@@ -107,7 +113,7 @@
           <mat-icon>arrow_upward</mat-icon>
         </button>
       </div>
-    </div>
+
     <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
