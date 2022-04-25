@@ -39,9 +39,9 @@
       </ul>
       <ng-template #recursiveListTmpl let-list="list">
         <li [id]="'element'+item.id" class="list-element" *ngFor="let item of list;">
-          <div (click)="redirect(item)" class="element" *ngIf="!(!!item.children && item.children.length > 0)"><mat-icon style="vertical-align: bottom"> {{item.icon}}</mat-icon>{{item.name}}</div>
-          <ul class="has-children" *ngIf="!!item.children && item.children.length > 0">
-            <div class="text-nowrap element" [id]="'heading'+item.id"><mat-icon style="vertical-align: bottom"> {{item.icon}}</mat-icon>
+          <div (click)="redirect(item)" class="element" *ngIf="!item.root"><mat-icon style="vertical-align: bottom"> {{item.icon}}</mat-icon>{{item.name}}</div>
+          <ul class="has-children" *ngIf="item.root">
+            <div *ngIf="!item.hidden" class="text-nowrap element" [id]="'heading'+item.id"><mat-icon style="vertical-align: bottom"> {{item.icon}}</mat-icon>
               <button class="expandible" [id]="'button'+item.id"
                       (click)="expandOrCollapse(item)" [attr.data-bs-target]="'#collapse'+item.id"
                       [attr.aria-controls]="'collapse'+item.id" type="button"
@@ -99,8 +99,8 @@
         </button>
         <div>
           <span *ngFor="let breadcrumb of breadcrumbs;let i = index; let last = last;">
-            <a class="text-white font-size-10" href="">{{breadcrumb.name}}</a>
-            <span *ngIf="!last"> • </span>
+            <a *ngIf="!breadcrumb.root" class="text-white font-size-10" href="{{breadcrumb.link_segment}}">{{breadcrumb.name}}</a>
+            <span *ngIf="!last && !breadcrumb.root"> • </span>
           </span>
         </div>
         <app-profile></app-profile>

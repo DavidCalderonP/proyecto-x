@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MenuConfig, Menu} from "../../configuration/core/MenuConfig";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatSidenav} from "@angular/material/sidenav";
 import {ConfigurationService} from "../../configuration/core/configuration.service";
 
@@ -18,7 +18,7 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
   list = MenuConfig
   breadcrumbs: Menu[] = [];
 
-  constructor(private router: Router, private configuration: ConfigurationService) {
+  constructor(private router: Router,private route: ActivatedRoute, private configuration: ConfigurationService) {
     //console.log(MenuConfig.filter(x=>x.show))
     //this.dataSource.data = MenuConfig;
   }
@@ -26,6 +26,7 @@ export class AfterLoginComponent implements OnInit, AfterViewInit {
   // hasChild = (_: number, node: any) => !!node.children && node.children.length > 0 && node.show_children;
 
   ngOnInit(): void {
+    this.loadBreadcrumbs(this.router.url.slice(1-(this.router.url.length)))
   }
 
   ngAfterViewInit() {

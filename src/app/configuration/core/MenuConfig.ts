@@ -4,7 +4,7 @@ export var MenuConfig: Array<Menu> = [
     name: 'Accounts',
     link_segment: 'accounts',
     icon: 'search',
-    show_children: true,
+    root: true,
     hidden: false,
     children: [
       {
@@ -12,7 +12,7 @@ export var MenuConfig: Array<Menu> = [
         name: 'Dashboard',
         link_segment: 'accounts/dashboard',
         icon: 'home',
-        show_children: true,
+        root: true,
         hidden: false,
         children: [
           {
@@ -20,7 +20,7 @@ export var MenuConfig: Array<Menu> = [
             name: 'Create Account',
             link_segment: 'accounts/create',
             icon: 'favorite_border',
-            show_children: true,
+            root: false,
             hidden: false
           }
         ]
@@ -30,7 +30,7 @@ export var MenuConfig: Array<Menu> = [
         name: 'Reports',
         link_segment: 'accounts/reports',
         icon: 'settings',
-        show_children: true,
+        root: false,
         hidden: false
       }
     ]
@@ -40,15 +40,25 @@ export var MenuConfig: Array<Menu> = [
     name: 'Activities',
     link_segment: 'activities',
     icon: 'fingerprint',
-    show_children: true,
-    hidden: false
+    root: false,
+    hidden: false,
+    children: [
+      {
+        id: 7,
+        name: 'Create Activitiy',
+        link_segment: 'activities/create',
+        icon: '',
+        root: false,
+        hidden: false
+      }
+    ]
   },
   {
     id: 6,
     name: 'Contacts',
     link_segment: 'contacts',
     icon: 'dashboard',
-    show_children: true,
+    root: false,
     hidden: false
   }
 ];
@@ -138,7 +148,7 @@ export interface Menu{
   name: string;
   link_segment: string;
   icon?: string;
-  show_children?: boolean;
+  root: boolean;
   hidden?: boolean;
   children?: Array<Menu>;
 }

@@ -4,9 +4,7 @@ import {AfterLoginComponent} from "./after-login.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {Route, RouterModule} from "@angular/router";
-import {AccountsComponent} from "./accounts/accounts.component";
 import {ContactsComponent} from "./contacts/contacts.component";
-import {ActivitiesComponent} from "./activities/activities.component";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
@@ -25,7 +23,7 @@ export const routes: Route[] = [
     children: [
       {
         path: 'accounts',
-        loadChildren: () => import('./accounts/accounts.module').then(m=>m.AccountsModule)
+        loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule)
       },
       {
         path: 'contacts',
@@ -33,7 +31,7 @@ export const routes: Route[] = [
       },
       {
         path: 'activities',
-        component: ActivitiesComponent
+        loadChildren: () => import('./activities/activities.module').then(m => m.ActivitiesModule)
       },
       {
         path: '**',
@@ -48,7 +46,6 @@ export const routes: Route[] = [
   declarations: [
     AfterLoginComponent,
     ContactsComponent,
-    ActivitiesComponent,
     FooterComponent,
     ProfileComponent],
   imports: [
