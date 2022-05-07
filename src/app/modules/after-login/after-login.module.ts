@@ -15,6 +15,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatMenuModule} from "@angular/material/menu";
 import { ProfileComponent } from './profile/profile.component';
+import {NgxPermissionsModule, NgxPermissionsRestrictStubModule} from "ngx-permissions";
 
 export const routes: Route[] = [
   {
@@ -53,6 +54,7 @@ export const routes: Route[] = [
     MatSidenavModule,
     MatListModule,
     RouterModule.forChild(routes),
+    NgxPermissionsModule.forChild(),
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -60,7 +62,8 @@ export const routes: Route[] = [
     CdkTreeModule,
     MatCardModule,
     MatChipsModule,
-    MatMenuModule
+    MatMenuModule,
+    NgxPermissionsRestrictStubModule
   ]
 })
 export class AfterLoginModule {

@@ -3,6 +3,7 @@ export var MenuConfig: Array<Menu> = [
     id: 1,
     name: 'Accounts',
     link_segment: 'accounts',
+    permissions: [],
     icon: 'search',
     root: true,
     hidden: false,
@@ -11,6 +12,7 @@ export var MenuConfig: Array<Menu> = [
         id: 2,
         name: 'Dashboard',
         link_segment: 'accounts/dashboard',
+        permissions: [],
         icon: 'home',
         root: true,
         hidden: false,
@@ -19,6 +21,7 @@ export var MenuConfig: Array<Menu> = [
             id: 4,
             name: 'Create Account',
             link_segment: 'accounts/create',
+            permissions: [],
             icon: 'favorite_border',
             root: false,
             hidden: false
@@ -29,6 +32,7 @@ export var MenuConfig: Array<Menu> = [
         id: 3,
         name: 'Reports',
         link_segment: 'accounts/reports',
+        permissions: [],
         icon: 'settings',
         root: false,
         hidden: false
@@ -39,6 +43,7 @@ export var MenuConfig: Array<Menu> = [
     id: 5,
     name: 'Activities',
     link_segment: 'activities',
+    permissions: [],
     icon: 'fingerprint',
     root: false,
     hidden: false,
@@ -47,6 +52,7 @@ export var MenuConfig: Array<Menu> = [
         id: 7,
         name: 'Create Activitiy',
         link_segment: 'activities/create',
+        permissions: [],
         icon: '',
         root: false,
         hidden: false
@@ -57,6 +63,7 @@ export var MenuConfig: Array<Menu> = [
     id: 6,
     name: 'Contacts',
     link_segment: 'contacts',
+    permissions: ['usuarios.usuarios'],
     icon: 'dashboard',
     root: false,
     hidden: false
@@ -147,6 +154,7 @@ export interface Menu{
   id: number;
   name: string;
   link_segment: string;
+  permissions: string[];
   icon?: string;
   root: boolean;
   hidden?: boolean;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../configuration/core/auth.service";
 import {Router} from "@angular/router";
+import {LoginService} from "./login.service";
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,15 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  defaultUser: {user: string, password: string} = {
-    user: "davidcalderon700@gmail.com",
-    password: "secret"
+  defaultUser: {email: string, password: string} = {
+    email: 'test@mail.com',
+    password: 'secret'
   }
 
   form!: FormGroup;
   constructor(private fb: FormBuilder,
               private authService: AuthService,
+              private loginService: LoginService,
               private router: Router) {
     console.log("Constructor login: ", this.authService.getCurrentUser)
     if(this.authService.getCurrentUser!==null){
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
     //this.defaultUser = {};
 
     this.form = this.fb.group({
-      user: [this.defaultUser?.user, [Validators.required, Validators.email, Validators.maxLength(50)]],
+      user: [this.defaultUser?.email, [Validators.required, Validators.email, Validators.maxLength(50)]],
       password: [this.defaultUser?.password, [Validators.required, Validators.minLength(5), Validators.maxLength(15)]]
       }
     );
@@ -46,12 +48,14 @@ export class LoginComponent implements OnInit {
     }
     console.log(this.form)
     const user = {
-      name: 'David Alonso',
-      lastname: 'Calderon Peña',
-      profile_img: "https://material.angular.io/assets/img/examples/shiba1.jpg",
-      ...this.form.value
+      email: 'test@mail.com',
+      password: 'secret'
     }
     this.authService.storeUser(user)
+    this.loginService.login(user).subscribe(res=>{
+      console.log(res)
+      this.authService.storeUser(res)
+    })
     this.router.navigate(['/']);
   }
 

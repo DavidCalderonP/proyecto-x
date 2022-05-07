@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API : "http://10.112.32.138:8056/calzzapato/v1/api/",
+  STORAGE: ''
 };
 
 /*

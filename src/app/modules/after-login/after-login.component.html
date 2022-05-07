@@ -39,7 +39,7 @@
       </ul>
       <ng-template #recursiveListTmpl let-list="list">
         <li [id]="'element'+item.id" class="list-element" *ngFor="let item of list;">
-          <div (click)="redirect(item)" class="element" *ngIf="!item.root"><mat-icon style="vertical-align: bottom"> {{item.icon}}</mat-icon>{{item.name}}</div>
+          <div (click)="redirect(item)" class="element" *ngIf="!item.root"><span *ngxPermissionsOnly="['clientes.clientes', 'usuarios.usuarios']"><mat-icon style="vertical-align: bottom"> {{item.icon}}</mat-icon>{{item.name}}</span></div>
           <ul class="has-children" *ngIf="item.root">
             <div *ngIf="!item.hidden" class="text-nowrap element" [id]="'heading'+item.id"><mat-icon style="vertical-align: bottom"> {{item.icon}}</mat-icon>
               <button class="expandible" [id]="'button'+item.id"
